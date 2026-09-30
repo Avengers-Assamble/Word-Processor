@@ -1,6 +1,6 @@
 # Documentation
 
-Design documents for the Text Editor / Word Processor project. All diagrams are hand-drawn and scanned from my notebook (dated 30/09/26).
+Design documents for the Text Editor / Word Processor project. All diagrams are hand-drawn and scanned from notebook.
 
 ## Contents
 
@@ -14,7 +14,7 @@ Design documents for the Text Editor / Word Processor project. All diagrams are 
 
 ## 1. Use Case Diagram
 
-![Use Case Diagram](images/01-use-case-diagram.jpeg)
+<img width="764" height="890" alt="WhatsApp Image 2026-09-30 at 11 09 21 PM" src="https://github.com/user-attachments/assets/69223bee-d8dd-460f-ab84-337df716e3d3" />
 
 Shows what the user (the only actor) can do with the text editor system:
 
@@ -30,7 +30,7 @@ Shows what the user (the only actor) can do with the text editor system:
 
 ## 2. Class Diagram - Word Processor
 
-![Class Diagram of Word Processor](images/02-class-diagram-word-processor.jpeg)
+<img width="879" height="1129" alt="WhatsApp Image 2026-09-30 at 11 08 35 PM" src="https://github.com/user-attachments/assets/4149f4ef-5213-4b3e-af2b-13683065d2c6" />
 
 Main structure of the word processor.
 
@@ -48,7 +48,7 @@ Legend used in the diagram: association, dependency, many (*), inheritance, impl
 
 ## 3. Class Diagram - Undo/Redo
 
-![Class Diagram of Undo Redo](images/03-class-diagram-undo-redo.jpeg)
+<img width="899" height="1199" alt="WhatsApp Image 2026-09-30 at 11 08 41 PM" src="https://github.com/user-attachments/assets/6cd192ef-6966-4d72-9721-69b0d43ccdab" />
 
 Undo/redo is built with the Command pattern plus snapshots.
 
@@ -62,7 +62,7 @@ Undo/redo is built with the Command pattern plus snapshots.
 
 ## 4. Sequence Diagram - Undo
 
-![Sequence Diagram Undo](images/04-sequence-diagram-undo.jpeg)
+<img width="899" height="902" alt="WhatsApp Image 2026-09-30 at 11 09 13 PM" src="https://github.com/user-attachments/assets/44729890-fe0a-40e4-bf75-772df0d469b3" />
 
 Objects: User, UndoManager, EditCommand, TextEditor, Document.
 
@@ -82,7 +82,7 @@ Undo:
 
 ## 5. Sequence Diagram - Save and Open
 
-![Sequence Diagram Save and Open](images/05-sequence-diagram-save-open.jpeg)
+<img width="899" height="842" alt="WhatsApp Image 2026-09-30 at 11 08 58 PM" src="https://github.com/user-attachments/assets/0f53eea0-fd0d-4d2c-847e-2600aa000abb" />
 
 Objects: User, FileManager, TextEditor, Document, TextFile.
 
