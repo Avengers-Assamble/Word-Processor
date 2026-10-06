@@ -1,8 +1,4 @@
 // afrida's code
-// EDITED: package/imports removed, and linked with TextEditor (so it works on
-// aarohi's document/paragraph/textrun through the editor). Her original undo/redo
-// logic (stacks, merging, listeners, history limit) is unchanged.
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
