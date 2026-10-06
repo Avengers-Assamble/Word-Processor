@@ -1,4 +1,4 @@
-// By Ankita
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -22,7 +22,7 @@ public class TextEditor {
         this.selection = new Selection(cursor);
     }
 
-    // ---------- Getters ----------
+
     public document getDocument() { return doc; }
     public Cursor getCursor() { return cursor; }
     public Selection getSelection() { return selection; }
@@ -60,7 +60,7 @@ public class TextEditor {
         selection = s.getSelection();
     }
 
-    // ---------- Typing / deleting ----------
+   
     public void insertText(String text) {
         if (text == null || text.isEmpty()) return;
         text = text.replace("\r", "");
@@ -99,7 +99,7 @@ public class TextEditor {
         }
     }
 
-    // ---------- Cursor movement (extend = Shift held) ----------
+    
     public void moveLeft(boolean extend) {
         if (!extend && !selection.isEmpty()) {
             moveTo(selection.getStart(), false);
@@ -173,7 +173,7 @@ public class TextEditor {
         cursor = end;
     }
 
-    // ---------- Formatting (selected text) ----------
+    
     public void setBold(boolean value) { applyStyle(r -> r.setBold(value)); }
     public void setItalic(boolean value) { applyStyle(r -> r.setItalic(value)); }
     public void setUnderline(boolean value) { applyStyle(r -> r.setUnderline(value)); }
@@ -183,7 +183,7 @@ public class TextEditor {
     public void toggleItalic() { setItalic(!allSelected(textrun::isItalic)); }
     public void toggleUnderline() { setUnderline(!allSelected(textrun::isUnderline)); }
 
-    // ---------- Clipboard ----------
+    
     public void copy() {
         if (selection.isEmpty()) return;
         Cursor s = selection.getStart();
@@ -211,7 +211,7 @@ public class TextEditor {
         }
     }
 
-    // ---------- Private helpers ----------
+    
     private paragraph para(int index) { return doc.getParagraphs().get(index); }
     private int paragraphCount() { return doc.getParagraphs().size(); }
 
