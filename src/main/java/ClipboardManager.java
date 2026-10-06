@@ -28,7 +28,7 @@ public class ClipboardManager {
         return result;
     }
 
-    /** New textrun with the same formatting as 'style' but with the given text. */
+  
     public static textrun copyRun(textrun style, String text) {
         textrun c = new textrun(text);
         c.setBold(style.isBold());
