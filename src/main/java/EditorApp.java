@@ -33,15 +33,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Main window: menu bar, toolbar, EditorView, status bar.
- * Wires the team's classes together:
- *   filemanager / Exporter  -> File menu
- *   TextEditor              -> cursor, selection, copy
- *   UndoManager             -> every change to the document
- *
- * Run it through Launcher (not directly).
- */
+
 public class EditorApp extends Application {
 
     private final filemanager fileManager = new filemanager();
