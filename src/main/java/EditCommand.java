@@ -1,11 +1,4 @@
-/**
-        * One undoable edit. It remembers the editor state BEFORE and AFTER the action:
-        *   execute() -> saves 'before', runs the action, saves 'after'
-        *   undo()    -> goes back to 'before'
-        *   redo()    -> goes to 'after'
-        *
-        * Typing commands are mergeable, so typing "hello" is ONE undo step, not five.
- */
+
 public class EditCommand implements MergeableCommand {
     private final TextEditor editor;
     private final String description;
@@ -47,16 +40,16 @@ public class EditCommand implements MergeableCommand {
         return description;
     }
 
-    // ---------- merging (used by UndoManager) ----------
+   
 
     @Override
     public boolean canMergeWith(Command other) {
         if (!(other instanceof EditCommand)) return false;
         EditCommand o = (EditCommand) other;
         return this.typing && o.typing
-                && !" ".equals(o.typedText)                              // a space starts a new step
-                && o.before.getSelection().isEmpty()                     // not replacing a selection
-                && this.after.getCursor().equals(o.before.getCursor());  // typed right after previous text
+                && !" ".equals(o.typedText)                              
+                && o.before.getSelection().isEmpty()                    
+                && this.after.getCursor().equals(o.before.getCursor());  
     }
 
     @Override
