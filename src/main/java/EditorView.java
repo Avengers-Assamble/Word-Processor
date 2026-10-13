@@ -28,18 +28,9 @@ import javafx.util.Duration;
 
 import java.util.List;
 
-/**
- * Draws the document (document -> paragraph -> textrun) on a white "page" and
- * turns keyboard / mouse input into calls on TextEditor and UndoManager.
- *
- * Each paragraph is a small VBox holding [selection highlight, TextFlow, caret],
- * so character index N in the TextFlow == offset N in the model.
- *
- * NOTE: we never import javafx.scene.Cursor, so "Cursor" here is the team's class.
- */
 public class EditorView extends ScrollPane {
 
-    private static final double PAGE_WIDTH = 794;      // A4 at 96 dpi
+    private static final double PAGE_WIDTH = 794;      
     private static final double PAGE_HEIGHT = 1123;
     private static final double PAGE_PADDING = 60;
     private static final double PX_PER_PT = 96.0 / 72.0;
@@ -75,7 +66,7 @@ public class EditorView extends ScrollPane {
         setFitToWidth(true);
         setFocusTraversable(true);
 
-        // mouse (scene coordinates, so it works anywhere on the desk)
+        
         desk.setOnMousePressed(e -> {
             if (!e.isPrimaryButtonDown()) return;
             requestFocus();
@@ -97,23 +88,19 @@ public class EditorView extends ScrollPane {
         blink.play();
     }
 
-    // ------------------------------------------------------------------
-    //  Public API
-    // ------------------------------------------------------------------
-
-    /** Point the view at an editor + its undo manager (call again after New / Open). */
+    
     public void bind(TextEditor editor, UndoManager undo) {
         this.editor = editor;
         this.undo = undo;
         refresh();
     }
 
-    /** Called after every redraw (used by the app to update the status bar). */
+    
     public void setOnChange(Runnable onChange) {
         this.onChange = onChange;
     }
 
-    /** Rebuild everything from the model. Call after ANY change to the editor. */
+    
     public void refresh() {
         if (editor == null) return;
 
@@ -137,9 +124,7 @@ public class EditorView extends ScrollPane {
         onChange.run();
     }
 
-    // ------------------------------------------------------------------
-    //  Rendering
-    // ------------------------------------------------------------------
+    
 
     private VBox buildParagraph(paragraph p) {
         List<textrun> runs = p.getRuns();
@@ -185,7 +170,7 @@ public class EditorView extends ScrollPane {
         return t;
     }
 
-    /** Draws the selection highlight and the caret for paragraph i. */
+  
     private void decorate(int i, VBox box, int len) {
         Path highlight = (Path) box.getChildren().get(0);
         TextFlow flow = (TextFlow) box.getChildren().get(1);
@@ -242,9 +227,7 @@ public class EditorView extends ScrollPane {
         return n;
     }
 
-    // ------------------------------------------------------------------
-    //  Mouse
-    // ------------------------------------------------------------------
+   
 
     private void placeCaret(MouseEvent e, boolean extend) {
         if (editor == null) return;
@@ -263,9 +246,6 @@ public class EditorView extends ScrollPane {
         }
     }
 
-    // ------------------------------------------------------------------
-    //  Keyboard  (shortcuts like Ctrl+Z / Ctrl+C live in the menu bar)
-    // ------------------------------------------------------------------
 
     private void onKeyPressed(KeyEvent e) {
         if (editor == null) return;
