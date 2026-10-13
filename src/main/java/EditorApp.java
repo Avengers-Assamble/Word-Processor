@@ -65,20 +65,19 @@ public class EditorApp extends Application {
         root.setCenter(view);
         root.setBottom(buildStatusBar());
 
-        attach(new TextEditor(new document()));      // start with an empty document
-
+        attach(new TextEditor(new document()));      
         stage.setScene(new Scene(root, 1000, 700));
         stage.setOnCloseRequest(e -> {
             if (!confirmDiscard()) e.consume();
         });
         stage.show();
-        Platform.runLater(() -> {                    // redraw once the window has a real size
+        Platform.runLater(() -> {                   
             view.refresh();
             view.requestFocus();
         });
     }
 
-    /** Connect a (new or opened) TextEditor to a fresh UndoManager and the view. */
+   
     private void attach(TextEditor newEditor) {
         editor = newEditor;
         undo = new UndoManager(editor);
@@ -106,10 +105,7 @@ public class EditorApp extends Application {
         updateTitle();
     }
 
-    // ------------------------------------------------------------------
-    //  Building the UI
-    // ------------------------------------------------------------------
-
+    
     private MenuBar buildMenuBar() {
         Menu file = new Menu("File");
         file.getItems().addAll(
@@ -223,10 +219,7 @@ public class EditorApp extends Application {
         stage.setTitle((dirty ? "*" : "") + name + " - Word Processor");
     }
 
-    // ------------------------------------------------------------------
-    //  Clipboard (internal clipboard keeps formatting; we also mirror plain text
-    //  to the system clipboard so copy/paste works with other programs)
-    // ------------------------------------------------------------------
+    
 
     private void doCopy() {
         if (editor.getSelection().isEmpty()) return;
@@ -249,9 +242,9 @@ public class EditorApp extends Application {
         boolean fromOutside = !system.isEmpty()
                 && (internal.isEmpty() || !system.equals(normalize(internal.getPlainText())));
         if (fromOutside) {
-            undo.type(system);                   // text copied from another program: plain text
+            undo.type(system);                   
         } else {
-            undo.paste();                        // our own copy: keeps bold / italic / size
+            undo.paste();                        
         }
     }
 
@@ -265,10 +258,7 @@ public class EditorApp extends Application {
         return s == null ? "" : s.replace("\r\n", "\n").replace("\r", "\n");
     }
 
-    // ------------------------------------------------------------------
-    //  Files
-    // ------------------------------------------------------------------
-
+  
     private void doNew() {
         if (!confirmDiscard()) return;
         currentFile = null;
@@ -326,7 +316,7 @@ public class EditorApp extends Application {
         }
     }
 
-    /** true = safe to continue (nothing unsaved, or saved / discarded); false = user cancelled. */
+    
     private boolean confirmDiscard() {
         if (!dirty) return true;
         String name = (currentFile == null) ? "Untitled" : currentFile.getName();
