@@ -1,6 +1,4 @@
-// bisakha's code
-// EDITED: 'Paragraph' -> 'paragraph' (Aarohi's class name), UTF-8 + auto-closing files,
-// and added versions that take the TextEditor directly. Save/open logic is the same.
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -21,7 +19,7 @@ public class filemanager {
         }
     }
 
-    /** Save what is currently in the editor. */
+  
     public void save(TextEditor editor, String path) throws IOException {
         save(editor.getDocument(), path);
     }
@@ -39,11 +37,7 @@ public class filemanager {
         return doc;
     }
 
-    /**
-     * Open a file and get a ready-to-use editor for it.
-     * (An empty file gives an editor with one empty paragraph.)
-     * Then create the undo manager with: new UndoManager(editor)
-     */
+    
     public TextEditor openInEditor(String path) throws IOException {
         return new TextEditor(open(path));
     }
