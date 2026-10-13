@@ -12,7 +12,7 @@ public class UndoManager {
 
     private int maxHistorySize = 200;
 
-    // ---- link to the editor (new) ----
+    
     private final TextEditor editor;
 
     public UndoManager(TextEditor editor) {
@@ -23,13 +23,7 @@ public class UndoManager {
         return editor;
     }
 
-    // =====================================================
-    //  Undoable editing (new): use these instead of calling
-    //  the TextEditor directly, so every change can be undone.
-    //  Moving the caret, selecting and copying don't change the
-    //  document, so call those on the TextEditor itself.
-    // =====================================================
-
+   
     public void type(String text) {
         if (text == null || text.isEmpty()) return;
         boolean plainTyping = text.indexOf('\n') < 0;
@@ -90,10 +84,7 @@ public class UndoManager {
         return editor.getCursor().equals(new Cursor(last, lastLen));
     }
 
-    // =====================================================
-    //  Afrida's original code (unchanged)
-    // =====================================================
-
+  
     public void setMaxHistorySize(int max) {
         this.maxHistorySize = max;
         trimHistory();
