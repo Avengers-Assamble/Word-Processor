@@ -8,7 +8,7 @@ A lightweight word processor built in Java with a JavaFX graphical interface. It
 
 | Member | Responsibility | Files |
 |---|---|---|
-| Himangshu Keot | GUI and integration: window, menu bar, toolbar, status bar, page view, keyboard and mouse handling | `Launcher`, `EditorApp`, `EditorView` |
+| Himangshu Keot | GUI and integration: window, menu bar, toolbar, status bar, page view, keyboard and mouse handling | `Launcher`, `Integration` |
 | Aarohi Verma | Document model | `document`, `paragraph`, `textrun` |
 | Afrida Doulla | Undo/redo (Command pattern) | `UndoManager`, `Command`, `MergeableCommand`, `EditCommand`, `EditorSnapshot`, `UndoRedoListener` |
 | Ankita Dutta | Editing logic: typing, deleting, cursor, selection, clipboard | `TextEditor`, `Cursor`, `Selection`, `ClipboardManager` |
